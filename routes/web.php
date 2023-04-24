@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('dashboard')->middleware([])->group(function()
+{
+    Route::get('/', [HomeController::class, 'index']);
+
+    Route::get('/admins', [AdminController::class, 'index']);
+    Route::get('/admins/create', [AdminController::class, 'create']);
+    Route::post('/admins/store', [AdminController::class, 'store']);
+    Route::get('/admins/promote/{id}', [AdminController::class, 'promote']);
+    Route::get('/admins/demote/{id}', [AdminController::class, 'demote']);
+   
 });
