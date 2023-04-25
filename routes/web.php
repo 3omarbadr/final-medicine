@@ -24,25 +24,27 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
 |--------------------------------------------------------------------------
 */
 
+Route::group(['middleware' => ['guest:admin']], function () {
 
-Route::get('dashboard/login', [AuthController::class, 'showLoginForm'])->name('dashboard.login');
-Route::post('dashboard/login', [AuthController::class, 'login'])->name('dashboard.login.submit');
-Route::post('dashboard/logout', [AuthController::class, 'logout'])->name('dashboard.logout');
+    Route::get('dashboard/login', [AuthController::class, 'showLoginForm'])->name('dashboard.login');
+    Route::post('dashboard/login', [AuthController::class, 'login'])->name('dashboard.login.submit');
+});
 
-Route::prefix('dashboard')->middleware(['auth:admin'])->group(function () {
+
+
+
+Route::prefix('dashboard')->middleware(['auth:admin', 'isAdmin'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('dashboard.home');
+    Route::post('dashboard/logout', [AuthController::class, 'logout'])->name('dashboard.logout');
     Route::get('/admins', [AdminController::class, 'index']);
     Route::get('/admins/create', [AdminController::class, 'create']);
     Route::post('/admins/store', [AdminController::class, 'store']);
     Route::get('/admins/promote/{id}', [AdminController::class, 'promote']);
     Route::get('/admins/demote/{id}', [AdminController::class, 'demote']);
 });
-
