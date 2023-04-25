@@ -1,68 +1,73 @@
-@extends('web.layout')
+@extends('layouts.app')
 
-@section('title')
-Log In
-@endsection
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Login') }}</div>
 
-@section('main')
-<!-- Hero-area -->
-<div class="hero-area section">
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
 
-	<!-- Backgound Image -->
-	<div class="bg-image bg-parallax overlay" style="background-image:url({{url("web/img/page-background.jpg")}})">
-	</div>
-	<!-- /Backgound Image -->
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1 text-center">
-				<ul class="hero-area-tree">
-					<li><a href="{{url('/')}}">{{__('web.home')}}</a></li>
-					<li>{{__('web.signin')}}</li>
-				</ul>
-				<h1 class="white-text">{{__("web.signinExam")}}</h1>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-			</div>
-		</div>
-	</div>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<!-- /Hero-area -->
-
-<!-- Contact -->
-<div id="contact" class="section">
-
-	<!-- container -->
-	<div class="container">
-
-		<!-- row -->
-		<div class="row">
-
-			<!-- login form -->
-			<div class="col-md-6 col-md-offset-3">
-				<div class="contact-form">
-					<h4>{{__('web.signin')}}</h4>
-
-					@include('web.inc.messages')
-					<form method="POST" action="{{url('login')}}">
-						@csrf
-						<input class="input" type="email" name="email" placeholder="Email">
-						<input class="input" type="password" name="password" placeholder="Password">
-						<input type="checkbox" name="remember" id=""> {{__('web.rememberme')}}
-						<br>
-						<button type="submit" class="main-button icon-button pull-right">{{__('web.signin')}}</button>
-					</form>
-					<a href="{{url('forgot-password')}}" class="text-muted">{{__('web.forgotPassword')}} ?</a>
-				</div>
-			</div>
-			<!-- /login form -->
-
-		</div>
-		<!-- /row -->
-
-	</div>
-	<!-- /container -->
-
-</div>
-<!-- /Contact -->
 @endsection
