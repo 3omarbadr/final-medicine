@@ -21,6 +21,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Select2 -->
     <link href="{{asset("assets/dashboard/plugins/select2/css/select2.min.css")}}" rel="stylesheet" />
 
+      <!-- DataTables -->
+    <link rel="stylesheet" href="{{asset("assets/dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css")}}">
+
     @yield('styles')
 
 </head>
@@ -291,14 +296,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{asset("assets/dashboard/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")}}"></script>
 
     <!-- jQuery Mapael -->
-    <script src="{{"assets/dashboard/plugins/jquery-mousewheel/jquery.mousewheel.js"}}"></script>
-    <script src="{{"assets/dashboard/plugins/raphael/raphael.min.js"}}"></script>
-    <script src="{{"assets/dashboard/plugins/jquery-mapael/jquery.mapael.min.js"}}"></script>
-    <script src="{{"assets/dashboard/plugins/jquery-mapael/usa_states.min.js"}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/jquery-mousewheel/jquery.mousewheel.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/raphael/raphael.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/jquery-mapael/jquery.mapael.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/jquery-mapael/usa_states.min.js")}}"></script>
     <!-- ChartJS -->
-    <script src="{{"assets/dashboard/plugins/chart.js/Chart.min.js"}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/chart.js/Chart.min.js")}}"></script>
 
+    <!-- DataTables  & Plugins -->
+    <script src="{{asset("assets/dashboard/plugins/datatables/jquery.dataTables.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/datatables-buttons/js/dataTables.buttons.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/datatables-buttons/js/buttons.bootstrap4.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/jszip/jszip.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/pdfmake/pdfmake.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/pdfmake/vfs_fonts.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/datatables-buttons/js/buttons.html5.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/datatables-buttons/js/buttons.print.min.js")}}"></script>
 
+    <script>
+        $(function () {
+          $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+          }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+          $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+          });
+        });
+      </script>
     @yield('scripts')
 
 </body>
