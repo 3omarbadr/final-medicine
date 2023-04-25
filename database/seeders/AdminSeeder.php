@@ -21,5 +21,12 @@ class AdminSeeder extends Seeder
             'status' => 'active',
             'super_admin' => 1,
         ]);
+        Admin::create([
+            'name' => 'Omar Badr',
+            'email' => 'omarbadr168@gmail.com',
+            'password' => Hash::make('12345678'),
+            'status' => 'active',
+            'super_admin' => 1,
+        ]);
     }
 }
