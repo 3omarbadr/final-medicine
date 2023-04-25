@@ -27,13 +27,13 @@
             <div class="row">
                 <div class="col-12 pb-3">
                     @include('dashboard.inc.errors')
-                    <form method="POST" action="{{url("dashboard/news/store")}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('news.store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label>title</label>
+                                        <label>Title</label>
                                         <input type="text" name="title" class="form-control">
                                     </div>
                                 </div>
@@ -53,18 +53,17 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="exampleInputFile">File input</label>
+                                        <label>Image</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile" name="img">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose
+                                                <input id="img-input" type="file" class="custom-file-input"
+                                                    name="img">
+                                                <label id="img-label" class="custom-file-label">Choose
                                                     file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">Upload</span>
                                             </div>
                                         </div>
                                     </div>
+                                        <img src="" id="selected-img" class="img-fluid" style="height: 200px">
                                 </div>
                             </div>
                             <div>
@@ -88,8 +87,47 @@
 
 @section('scripts')
 <script>
-    $(document).ready(function() {
-    $('#skill-select').select2();
-});
+    // // Get the file input element
+    // const imgInput = document.getElementById('img-input');
+
+    // // Get the label element
+    // const imgLabel = document.getElementById('img-label');
+
+    // // Add an event listener to the file input field
+    // imgInput.addEventListener('change', function() {
+    //     // Get the selected file name
+    //     const fileName = imgInput.files[0].name;
+
+    //     // Update the label text with the file name
+    //     imgLabel.innerHTML = fileName;
+    // });
+
+// Get the file input element
+const imgInput = document.getElementById('img-input');
+
+// Get the label element
+const imgLabel = document.getElementById('img-label');
+
+// Get the image element
+const imgElement = document.getElementById('selected-img');
+
+    // Add an event listener to the file input field
+    imgInput.addEventListener('change', function() {
+        // Get the selected file name
+        const fileName = imgInput.files[0].name;
+
+        // Update the label text with the file name
+        imgLabel.innerHTML = fileName;
+
+        // Create a URL for the selected image
+        const url = URL.createObjectURL(imgInput.files[0]);
+
+        // Set the src attribute of the image element to the URL
+        imgElement.setAttribute('src', url);
+
+        // Show the image element
+        imgElement.style.display = 'block';
+    });
+
 </script>
 @endsection

@@ -54,22 +54,24 @@
                                         <td>{{$new->title}}</td>
                                         <td>{{$new->subtitle}}</td>
                                         <td>
-                                            {{-- <img src="{{asset(" storage/uploads/news/$new->img")}}" height="50px">
-                                            --}}
-                                            <img src="{{$new->img}}" height="50px">
-                                            {{-- {{$new->img}} --}}
+                                            <img src="{{ Illuminate\Support\Str::startsWith($new->img, 'news') ? url("storage/$new->img") : $new->img }}" class="img-fluid "
+                                            style="height: 75px; width: 60px" alt="news">
                                         </td>
                                         <td>{{$new->description}}</td>
                                         <td>
-                                            <a href="{{url("dashboard/news/show/$new->id")}}" class="btn btn-sm
-                                                btn-primary"><i class="fas fa-eye"></i></a>
-                                                
-                                            <a href="{{url("dashboard/news/edit/$new->id")}}" class="btn btn-sm
-                                                btn-info"><i class="fas fa-edit"></i></a>
-                                            <a href="{{url("dashboard/news/delete/$new->id")}}" class="btn btn-sm
-                                                btn-danger"><i class="fas fa-trash"></i></a>
-                                            <a href="{{url("dashboard/news/toggle/$new->id")}}" class="btn btn-sm
-                                                btn-secondary"><i class="fas fa-toggle-on"></i></a>
+                                            <div class="btn-group">
+                                                <a href="{{route('news.show', $new->id)}}" class="mr-1 btn btn-sm
+                                                    btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="{{route('news.edit', $new->id)}}" class="mr-1 btn btn-sm
+                                                    btn-info"><i class="fas fa-edit"></i></a>
+                                                <form method="POST" action="{{ route('news.destroy', $new->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn
+                                                                btn-sm btn-danger"><i
+                                                            class="fas fa-trash"></i></button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>

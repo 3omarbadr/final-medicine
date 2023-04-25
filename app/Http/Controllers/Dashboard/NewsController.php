@@ -6,6 +6,8 @@ use App\Models\News;
 use Illuminate\Http\Request;
 use App\Services\NewsService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Dashboard\NewsRequest;
 
 class NewsController extends Controller
 {
@@ -27,36 +29,41 @@ class NewsController extends Controller
     public function show($id)
     {
         $news = $this->newsService->getNewsById($id);
-        return redirect()->route('dashboard.news.show', compact('news'));
+        return view('dashboard.news.show', compact('news'));
     }
 
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
-        $data = $request->all();
+        $attributes = $request->validated();
 
         if ($request->img) {
-            $attributes['img'] = $request->image->store('news');
-        };
-        $this->newsService->createNews($data);
-        return redirect()->route('dashboard.news.index');
+            $attributes['img'] = $request->img->store('news');
+        }
+        $this->newsService->createNews($attributes);
+        return redirect()->route('news.index')->with('success', 'News created successfully');
     }
 
     public function edit($id)
     {
         $news = $this->newsService->getNewsById($id);
-        return view('news.edit', compact('news'));
+        return view('dashboard.news.edit', compact('news'));
     }
 
-    public function update(Request $request, $id)
+    public function update(NewsRequest $request, $id)
     {
-        $data = $request->all();
-        $this->newsService->updateNews($id, $data);
-        return redirect()->route('dashboard.news.index');
+        $attributes = $request->validated();
+        if ($request->img) {
+            Storage::delete($this->newsService->getNewsById($id)->img);
+            $attributes['img'] = $request->img->store('news');
+        };
+        $this->newsService->updateNews($id, $attributes);
+        return redirect()->route('news.index');
     }
 
     public function destroy($id)
     {
         $this->newsService->deleteNews($id);
-        return redirect()->route('dashboard.news.index');
+        Storage::delete($this->newsService->getNewsById($id)->img);
+        return redirect()->route('news.index');
     }
 }

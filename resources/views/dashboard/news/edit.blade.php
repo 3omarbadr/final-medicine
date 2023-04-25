@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('dashboard.layout')
 
 @section('main')
 <!-- Content Wrapper. Contains page content -->
@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">{{__('web.exams')}}</h1>
+                    <h1 class="m-0 text-dark">News</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{url('dashboard')}}">{{__('web.home')}}</a></li>
-                        <li class="breadcrumb-item active">{{__('web.exams')}}</li>
+                        <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+                        <li class="breadcrumb-item active">News</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -25,83 +25,48 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    @include('admin.inc.errors')
-                    <form method="POST" action="{{url("dashboard/exams/update/$exam->id")}}" enctype="multipart/form-data">
+                <div class="col-12 pb-3">
+                    @include('dashboard.inc.errors')
+                    <form method="POST" action="{{route('news.update', $news->id)}}" enctype="multipart/form-data">
                         @csrf
+                        @method('PATCH')
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label>Name (en)</label>
-                                        <input type="text" name="name_en" value="{{$exam->name('en')}}" class="form-control">
+                                        <label>Title</label>
+                                        <input type="text" value="{{$news->title}}" name="title" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label>Name (ar)</label>
-                                        <input type="text" name="name_ar" value="{{$exam->name('ar')}}" class="form-control">
+                                        <label>Subtitle</label>
+                                        <input type="text" value="{{$news->subtitle}}" name="subtitle" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label>Description (en)</label>
-                                        <textarea rows="5" name="desc_en" class="form-control">{{$exam->desc('en')}}</textarea>
+                                        <label>Description</label>
+                                        <textarea rows="5" name="description" class="form-control">{{$news->description}}</textarea>
                                     </div>
                                 </div>
-
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label>Description (ar)</label>
-                                        <textarea rows="5" name="desc_ar" class="form-control">{{$exam->desc('ar')}}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label>Skill</label>
-                                        <select class="form-control" id="skill-select" name="skill_id">
-                                        @foreach ($skills as $skill)
-                                            <option value="{{$skill->id}}" @if ($exam->skill_id == $skill->id) selected @endif >{{$skill->name('en')}}</option>
-                                        @endforeach
-                                    </select>
-                                    </div>
-                                </div>
-
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Image</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" name="img" class="custom-file-input">
-                                                <label class="custom-file-label">Choose file</label>
+                                                <input id="img-input" type="file" class="custom-file-input"
+                                                    name="img">
+                                                <label id="img-label" class="custom-file-label">Choose
+                                                    file</label>
                                             </div>
                                         </div>
                                     </div>
+                                        <img src="{{ Illuminate\Support\Str::startsWith($news->img, 'news') ? url("storage/$news->img") : $news->img }}" id="selected-img" class="img-fluid" style="height: 200px">
                                 </div>
                             </div>
-
-                            <div class="row">
-
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label>Difficulty</label>
-                                        <input type="number" name="difficulty" value="{{$exam->difficulty}}" class="form-control">
-                                    </div>
-                                </div>
-                                
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label>Duration (mins.)</label>
-                                        <input type="number" name="duration_mins" value="{{$exam->duration_mins}}" class="form-control">
-                                    </div>
-                                </div> 
-                            </div>
-
                             <div>
                                 <button type="submit" class="btn btn-success">Submit</button>
                                 <a href="{{url()->previous()}}" class="btn btn-primary">Back</a>
@@ -123,8 +88,32 @@
 
 @section('scripts')
 <script>
-    $(document).ready(function() {
-    $('#skill-select').select2();
-});
+// Get the file input element
+const imgInput = document.getElementById('img-input');
+
+// Get the label element
+const imgLabel = document.getElementById('img-label');
+
+// Get the image element
+const imgElement = document.getElementById('selected-img');
+
+    // Add an event listener to the file input field
+    imgInput.addEventListener('change', function() {
+        // Get the selected file name
+        const fileName = imgInput.files[0].name;
+
+        // Update the label text with the file name
+        imgLabel.innerHTML = fileName;
+
+        // Create a URL for the selected image
+        const url = URL.createObjectURL(imgInput.files[0]);
+
+        // Set the src attribute of the image element to the URL
+        imgElement.setAttribute('src', url);
+
+        // Show the image element
+        imgElement.style.display = 'block';
+    });
+
 </script>
 @endsection

@@ -38,13 +38,10 @@ class NewsService
         return $news;
     }
 
-    public function deleteNews($id): ?News
+    public function deleteNews($id): void
     {
         $news = $this->newsRepository->getNewsById($id);
-        if (!$news) {
-            return null;
-        }
+
         $this->newsRepository->deleteNews($news);
-        return $news;
     }
 }

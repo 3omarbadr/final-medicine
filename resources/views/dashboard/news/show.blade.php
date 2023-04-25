@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('dashboard.layout')
 
 @section('main')
 
@@ -9,13 +9,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">{{$exam->name('en')}}</h1>
+                    <h1 class="m-0 text-dark">{{$news->title}}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{url('/dashboard/exams')}}">Exam</a></li>
-                        <li class="breadcrumb-item active">{{$exam->name('en')}}</li>
+                        <li class="breadcrumb-item"><a href="{{url('/dashboard/news')}}">news</a></li>
+                        <li class="breadcrumb-item active">{{$news->title}}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -30,86 +30,36 @@
                 <div class="col-md-10 offset-md-1 pb-3">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Exam Details</h3>
+                            <h3 class="card-title">News Details</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <table class="table table-sm">
                                 <tbody>
                                     <tr>
-                                        <th>Name (en)</th>
+                                        <th>Title</th>
                                         <td>
-                                            {{$exam->name('en')}}
+                                            {{$news->title}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Subtitle</th>
+                                        <td>
+                                            {{$news->subtitle}}
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <th>Name (ar)</th>
+                                        <th>Description</th>
                                         <td>
-                                            {{$exam->name('ar')}}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>Description (en)</th>
-                                        <td>
-                                            {{$exam->desc("en")}}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>Description (ar)</th>
-                                        <td>
-                                            {{$exam->desc("ar")}}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>Skill</th>
-                                        <td>
-                                            {{$exam->skill->name("en")}}
+                                            {{$news->description}}
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <th>Image</th>
                                         <td>
-                                            <img src="{{asset("storage/uploads/exams/$exam->img")}}" height="50px">
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>Questions no.</th>
-                                        <td>
-                                            {{$exam->questions_no}}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>Difficulty</th>
-                                        <td>
-                                            {{$exam->difficulty}}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>Duration (mins.)</th>
-                                        <td>
-                                            {{$exam->duration_mins}}
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>Active</th>
-                                        <td>
-                                            @if($exam->active)
-
-                                            <span class="badge bg-success">yes</span>
-                                            @else
-
-                                            <span class="badge bg-danger">no</span>
-
-                                            @endif
+                                            <img src="{{ Illuminate\Support\Str::startsWith($news->img, 'news') ? url("storage/$news->img") : $news->img }}" height="100px">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -117,9 +67,7 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
-
-                    <a href="{{url("dashboard/exams/show-questions/$exam->id")}}" class="btn btn-sm btn-success">Show Questions</a>
-                    <a href="{{url()->previous()}}" class="btn btn-sm btn-primary">Back</a>
+                    <a href="{{route('news.index')}}" class="btn btn-sm btn-primary">Back</a>
                 </div>
             </div>
             <!-- /.row -->
