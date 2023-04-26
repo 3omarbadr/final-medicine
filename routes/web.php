@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\NewsController;
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\IllnessController;
+use App\Http\Controllers\Dashboard\MedicineServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,4 +52,5 @@ Route::prefix('dashboard')->middleware(['auth:admin', 'isAdmin'])->group(functio
 
     Route::resource('news',NewsController::class);
     Route::resource('illnesses',IllnessController::class);
+    Route::resource('medicineServices',MedicineServiceController::class);
 });
