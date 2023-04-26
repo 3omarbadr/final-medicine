@@ -57,13 +57,13 @@ class NewsController extends Controller
             $attributes['img'] = $request->img->store('news');
         };
         $this->newsService->updateNews($id, $attributes);
-        return redirect()->route('news.index');
+        return redirect()->route('news.index')->with('success', 'News updated successfully');
     }
 
     public function destroy($id)
     {
-        $this->newsService->deleteNews($id);
         Storage::delete($this->newsService->getNewsById($id)->img);
-        return redirect()->route('news.index');
+        $this->newsService->deleteNews($id);
+        return redirect()->route('news.index')->with('success', 'News deleted successfully');
     }
 }

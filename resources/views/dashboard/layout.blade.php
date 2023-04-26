@@ -26,6 +26,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{asset("assets/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
     <link rel="stylesheet" href="{{asset("assets/dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css")}}">
 
+    <!--Toastr and Sweetalert -->
+    <link rel="stylesheet" href="{{asset("assets/dashboard/plugins/sweetalert2/sweetalert2.min.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/dashboard/plugins/toastr/toastr.min.css")}}">
+
     @yield('styles')
 
 </head>
@@ -83,8 +87,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 mr-3 img-circle">
+                                {{-- <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 mr-3 img-circle"> --}}
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Brad Diesel
@@ -100,8 +104,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dist/img/user8-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
+                                {{-- <img src="dist/img/user8-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3"> --}}
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         John Pierce
@@ -117,8 +121,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dist/img/user3-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
+                                {{-- <img src="dist/img/user3-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3"> --}}
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Nora Silvester
@@ -305,6 +309,80 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{asset("assets/dashboard/plugins/pdfmake/vfs_fonts.js")}}"></script>
     <script src="{{asset("assets/dashboard/plugins/datatables-buttons/js/buttons.html5.min.js")}}"></script>
     <script src="{{asset("assets/dashboard/plugins/datatables-buttons/js/buttons.print.min.js")}}"></script>
+
+    <!--Toastr and Sweetalert -->
+    <script src="{{asset("assets/dashboard/plugins/sweetalert2/sweetalert2.all.min.js")}}"></script>
+    <script src="{{asset("assets/dashboard/plugins/toastr/toastr.min.js")}}"></script>
+
+    <script>
+        toastr.options.escapeHtml = true;
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "300",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        
+        @if(Session::has('success'))
+            toastr.success("{{Session::get('success')}}")
+        @endif
+    
+        @if(Session::has('warning'))
+            toastr.warning("{{Session::get('warning')}}")
+        @endif
+    
+        @if(Session::has('info'))
+            toastr.info("{{Session::get('info')}}")
+        @endif
+    
+        @if(Session::has('error'))
+            toastr.error("{{Session::get('error')}}")
+        @endif
+    
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{$error}}")
+            @endforeach
+        @endif
+    
+    </script>
+
+    {{-- <script>
+      $(document).on("click", "#delete", function(e) {
+            e.preventDefault();
+            var link = $(this).attr("href");
+            var form = $(this).closest("form"); // get the closest form element
+            var actionUrl = form.attr("action"); // get the URL specified in the form's action attribute
+            new swal({
+                    title: "Are you sure you want to delete?",
+                    text: "Once deleted, this will be permanently deleted!",
+                    icon: "warning",
+                    buttons: true,
+                    buttons: ["Cancel", "Delete"],
+                    dangerMode: true,
+                    closeOnClickOutside: false, //prevent dialog from closing on outside click
+                    cancelButtonColor: '#d33', //customize cancel button color
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location.href = actionUrl;
+                    } else {
+                        new swal("Safe data!");
+                    }
+                });
+        });
+    </script> --}}
 
     @yield('scripts')
 

@@ -66,8 +66,8 @@
                                                     btn-info"><i class="fas fa-edit"></i></a>
                                                 <form method="POST" action="{{ route('news.destroy', $new->id) }}">
                                                     @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn
+                                                    @method('Delete')
+                                                    <button id='delete' type="submit" class="btn
                                                                 btn-sm btn-danger"><i
                                                             class="fas fa-trash"></i></button>
                                                 </form>
