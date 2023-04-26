@@ -29,6 +29,9 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Admins list</h3>
+              <div class="card-tools">
+                <a href="{{route('admins.create')}}" class="btn btn-small btn-primary">Add New</a>
+              </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -55,7 +58,15 @@
                     <td>{{$admin->status}}</td>
                     <td>{{$admin->created_at}}</td>
                     <td>{{$admin->updated_at}}</td>
-                    <td>\</td>
+                    <td>
+                      @if ($admin->super_admin == 0 && auth()->user()->id !== $admin->id)
+                      <a href="{{ route('admins.promote', $admin->id) }}" class="btn btn-sm btn-danger"><i
+                          class="fas fa-level-up-alt"></i></a>
+                      @elseif ($admin->super_admin == 1 && auth()->user()->id !== $admin->id)
+                      <a href="{{ route('admins.demote', $admin->id) }}" class="btn btn-sm btn-success"><i
+                          class="fas fa-level-down-alt"></i></a>
+                      @endif
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -78,7 +89,7 @@
 @endsection
 
 @section('scripts')
-  
+
 <script>
   $(function () {
     $("#admins").DataTable({
