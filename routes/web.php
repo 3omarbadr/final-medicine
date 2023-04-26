@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
-use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\NewsController;
+use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\IllnessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +50,5 @@ Route::prefix('dashboard')->middleware(['auth:admin', 'isAdmin'])->group(functio
     Route::resource('admins',AdminController::class)->only(['index', 'store', 'create']);
 
     Route::resource('news',NewsController::class);
+    Route::resource('illnesses',IllnessController::class);
 });

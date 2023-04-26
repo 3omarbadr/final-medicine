@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Admin;
 use App\Repositories\AdminRepository;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Validator;
 
 class AdminService
 {
