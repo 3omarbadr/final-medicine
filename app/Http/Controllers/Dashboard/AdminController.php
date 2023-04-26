@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\User;
 use App\Models\Admin;
-use Illuminate\Http\Request;
 use App\Services\AdminService;
-use App\Http\Requests\AdminRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Dashboard\AdminRequest;
 
 class AdminController extends Controller
 {
