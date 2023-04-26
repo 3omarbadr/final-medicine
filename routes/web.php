@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\AdminController;
+use App\Http\Controllers\Dashboard\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +48,6 @@ Route::prefix('dashboard')->middleware(['auth:admin', 'isAdmin'])->group(functio
     Route::post('/admins/store', [AdminController::class, 'store']);
     Route::get('/admins/promote/{id}', [AdminController::class, 'promote']);
     Route::get('/admins/demote/{id}', [AdminController::class, 'demote']);
+
+    Route::resource('news',NewsController::class);
 });

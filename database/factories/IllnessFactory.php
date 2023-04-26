@@ -17,7 +17,7 @@ class IllnessFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->randomElement(['Flu', 'Cancer', 'Corona', 'Sugary']),
             'img' => $this->faker->imageUrl(),
             'description' => $this->faker->paragraph(),
         ];
