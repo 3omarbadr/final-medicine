@@ -21,7 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Select2 -->
     <link href="{{asset("assets/dashboard/plugins/select2/css/select2.min.css")}}" rel="stylesheet" />
 
-      <!-- DataTables -->
+    <!-- DataTables -->
     <link rel="stylesheet" href="{{asset("assets/dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")}}">
     <link rel="stylesheet" href="{{asset("assets/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css")}}">
     <link rel="stylesheet" href="{{asset("assets/dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css")}}">
@@ -218,6 +218,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{url('dashboard/medicineServices')}}" class="nav-link">
+                                <i class="nav-icon fas fa-brain"></i>
+                                <p>
+                                    Medicine Services </p>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
                             <a href="{{url('dashboard/news')}}" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
@@ -359,7 +368,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </script>
 
     {{-- <script>
-      $(document).on("click", "#delete", function(e) {
+        $(document).on("click", "#delete", function(e) {
             e.preventDefault();
             var link = $(this).attr("href");
             var form = $(this).closest("form"); // get the closest form element
