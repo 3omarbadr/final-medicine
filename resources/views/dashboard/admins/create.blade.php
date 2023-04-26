@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('dashboard.layout')
 
 @section('main')
 <!-- Content Wrapper. Contains page content -->
@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">{{__('web.admins')}}</h1>
+                    <h1 class="m-0 text-dark">News</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{url('dashboard')}}">{{__('web.home')}}</a></li>
-                        <li class="breadcrumb-item active">{{__('web.admins')}}</li>
+                        <li class="breadcrumb-item"><a href="{{url('dashboard')}}">Home</a></li>
+                        <li class="breadcrumb-item active">News</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -25,9 +25,8 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 pb-3">
-                    @include('admin.inc.errors')
-                    <form method="POST" action="">
+                <div class="col-12">
+                    <form method="POST" action="{{route('admins.store')}}">
                         @csrf
                         <div class="card-body">
                             <div class="row">
@@ -61,22 +60,9 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                            {{-- <div class="col-6">
-                                <div class="form-group">
-                                    <label>Role</label>
-                                    <select class="form-control"  name="role_id">
-                                    @foreach ($roles as $role)
-                                        <option value="{{$role->id}}">{{$role->name}}</option>
-                                    @endforeach
-                                </select>
-                                </div>
-                            </div> --}}
-
                             <div>
                                 <button type="submit" class="btn btn-success">Submit</button>
-                                <a href="{{url()->previous()}}" class="btn btn-primary">Back</a>
+                                <a href="{{route('admins.index')}}" class="btn btn-primary">Back</a>
                             </div>
                         </div>
                         <!-- /.card-body -->

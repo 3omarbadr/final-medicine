@@ -43,11 +43,10 @@ Route::group(['middleware' => ['guest:admin']], function () {
 Route::prefix('dashboard')->middleware(['auth:admin', 'isAdmin'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('dashboard.home');
     Route::post('dashboard/logout', [AuthController::class, 'logout'])->name('dashboard.logout');
-    Route::get('/admins', [AdminController::class, 'index']);
-    Route::get('/admins/create', [AdminController::class, 'create']);
-    Route::post('/admins/store', [AdminController::class, 'store']);
-    Route::get('/admins/promote/{id}', [AdminController::class, 'promote']);
-    Route::get('/admins/demote/{id}', [AdminController::class, 'demote']);
+    
+    Route::get('/admins/promote/{admin}', [AdminController::class, 'promote'])->name('admins.promote');
+    Route::get('/admins/demote/{superAdmin}', [AdminController::class, 'demote'])->name('admins.demote');
+    Route::resource('admins',AdminController::class)->only(['index', 'store', 'create']);
 
     Route::resource('news',NewsController::class);
 });

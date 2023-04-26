@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\News;
-use Illuminate\Http\Request;
+
 use App\Services\NewsService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;

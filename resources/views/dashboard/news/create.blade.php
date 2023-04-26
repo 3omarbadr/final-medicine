@@ -26,7 +26,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 pb-3">
-                    @include('dashboard.inc.errors')
                     <form method="POST" action="{{route('news.store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
