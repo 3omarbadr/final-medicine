@@ -215,17 +215,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
+                            <a href="{{url('dashboard/contacts')}}" class="nav-link">
+                                <i class="nav-icon fas fa-address-book"></i>
+                                <p>
+                                    Contact Forms
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{url('dashboard/illnesses')}}" class="nav-link">
-                                <i class="nav-icon fas fa-brain"></i>
+                                <i class="nav-icon fas fa-disease"></i>
                                 <p>
                                     Illnesses
                                 </p>
                             </a>
                         </li>
 
+
                         <li class="nav-item">
                             <a href="{{url('dashboard/medicineServices')}}" class="nav-link">
-                                <i class="nav-icon fas fa-brain"></i>
+                                <i class="nav-icon fas fa-stethoscope"></i>
                                 <p>
                                     Medicine Services </p>
                             </a>
@@ -234,7 +244,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <li class="nav-item">
                             <a href="{{url('dashboard/news')}}" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
+                                <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     News
                                 </p>
@@ -249,6 +259,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
+
                         @if (Auth::user()->super_admin == 1)
                         <li class="nav-item">
                             <a href="{{url('dashboard/admins')}}" class="nav-link">
