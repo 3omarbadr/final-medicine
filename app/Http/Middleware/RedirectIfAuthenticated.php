@@ -20,12 +20,12 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? ['web', 'admin'] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
+            if (Auth::guard($guard)->check() && $guard == 'web') {
                 return redirect()->intended(RouteServiceProvider::HOME);
             }
 
             if (Auth::guard($guard)->check() && $guard == 'admin') {
-                return redirect()->route('dashboard.home');
+                return redirect()->intended(RouteServiceProvider::ADMIN);
             }
         }
 

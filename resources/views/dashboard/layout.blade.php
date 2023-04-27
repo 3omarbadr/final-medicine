@@ -50,6 +50,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
                 </li>
+                <li>
+                    <form action="{{ route('dashboard.logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Sign out</button>
+                      </form>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
@@ -259,6 +265,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <!-- /.sidebar -->
         </aside>
+        
 
         @yield('main')
 
