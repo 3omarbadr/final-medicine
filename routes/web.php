@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\AboutController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\NewsController;
+use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\IllnessController;
 use App\Http\Controllers\Dashboard\MedicineServiceController;
-use App\Http\Controllers\MedicineServiceController as WebMedicineServiceController;
 use App\Http\Controllers\NewsController as WebNewsController;
+use App\Http\Controllers\MedicineServiceController as WebMedicineServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,7 @@ Route::prefix('dashboard')->middleware(['auth:admin', 'isAdmin'])->group(functio
     Route::get('/admins/promote/{admin}', [AdminController::class, 'promote'])->name('admins.promote');
     Route::get('/admins/demote/{superAdmin}', [AdminController::class, 'demote'])->name('admins.demote');
     Route::resource('admins',AdminController::class)->only(['index', 'store', 'create']);
+    Route::resource('users',UserController::class)->except('edit', 'update');
 
     Route::resource('news',NewsController::class);
     Route::resource('illnesses',IllnessController::class);

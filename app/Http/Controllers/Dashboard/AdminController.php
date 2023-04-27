@@ -54,7 +54,6 @@ class AdminController extends Controller
 
     public function destroy($id)
     {
-        Storage::delete($this->adminService->getAdminById($id)->img);
         $this->adminService->deleteAdmin($id);
         return redirect()->route('admins.index')->with('success', 'Admin deleted successfully');
     }
