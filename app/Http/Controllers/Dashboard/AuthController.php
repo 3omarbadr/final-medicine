@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -10,37 +9,51 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/dashboard';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
+
     public function showLoginForm()
     {
-        return view('dashboard.auth.login');
+        return view('auth.dashboardLogin');
     }
 
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
 
-        $admin = Admin::where('email', $request->email)->first();
-
-        if ($admin) {
-            if ($admin->status === 0) {
-                return back()->with('error', 'Access denied');
-            }
-        }
-
         if (Auth::guard('admin')->attempt($credentials)) {
-
-            return redirect(route('dashboard.home'));
+            $request->session()->regenerate();
+            return redirect()->intended(route('dashboard.home'));
         }
-        return back();
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
     public function logout()
     {
         Auth::guard('admin')->logout();
 
-        return redirect(route('dashboard.login'));
+        return redirect()->route('dashboard.login');
     }
 }
