@@ -13,15 +13,15 @@
 <body>
   @include('web.partials.nav')
   <div class="container">
-    <div class="row justify-content-between">
+    <div class="row justify-content-center">
       @foreach ($news as $article)
-      <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="card">
           <img class="card-img-top img-fluid" src="{{ Illuminate\Support\Str::startsWith($article->img, 'news') ? url("storage/$article->img") : $article->img }}"
           alt="news" style="max-height: 150px; object-fit: cover;">
           <div class="card-body">
             <h2 class="card-title">{{ $article->title }}</h2>
-            <h3 class="card-subtitle mb-2 text-muted">{{ $article->subtitle }}</h3>
+            <h3 class="card-subtitle text-muted">{{ $article->subtitle }}</h3>
             <p class="card-text">{{ $article->description }}</p>
           </div>
         </div>

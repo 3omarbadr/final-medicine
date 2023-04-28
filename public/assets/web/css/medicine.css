@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@200;300;400;700&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
 }
 
-body{
+body {
     font-family: 'Barlow Semi Condensed', sans-serif;
     line-height: 1.7;
-    
+
 }
+
 header {
     background-color: #f0f0f0;
     width: 100%;
@@ -20,11 +21,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 200px ;
+    padding: 10px 200px;
 }
 
-.logo{
-    
+.logo {
+
     letter-spacing: 0.1em;
     text-decoration: none;
     color: black;
@@ -36,9 +37,9 @@ header {
 nav {
     background-color: #333;
     height: 50px;
-  }
-  
-  nav ul {
+}
+
+nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -46,24 +47,24 @@ nav {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-  }
-  
-  nav li {
+}
+
+nav li {
     margin: 0 10px;
-  }
-  
-  nav a {
+}
+
+nav a {
     display: block;
     padding: 10px;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.2s ease;
-  }
-  
-  nav a:hover {
+}
+
+nav a:hover {
     color: #15e4d0;
-  }
+}
 
 section {
     padding: 100px 200px;
@@ -117,6 +118,8 @@ section {
 }
 
 .card {
+    height: 450px;
+    overflow: hidden;
     background-color: #fff;
     width: 21.25em;
     padding: 25px;
@@ -131,7 +134,7 @@ section {
     text-align: center;
 }
 
-.info h3{
+.info h3 {
     color: black;
     font-size: 1.2em;
     font-weight: 700;
@@ -142,6 +145,7 @@ section {
     color: white;
     background-color: #333333;
 }
+
 .content2 {
     display: flex;
     justify-content: center;
@@ -149,21 +153,27 @@ section {
     flex-wrap: wrap;
 }
 
-.section .content2{
+.section .content2 {
     margin-top: 30px;
 }
-.section h3 ,p,h1{
+
+.section h3,
+p,
+h1 {
     text-align: center;
 }
-.section h3{
+
+.section h3 {
     font-size: 15px;
     padding-bottom: 4px;
 }
-.section h1{
+
+.section h1 {
     font-size: 40px;
     word-spacing: 0.2em;
     padding-bottom: 4px;
-} 
+}
+
 .card2 {
     width: 15em;
     padding: 25px;
@@ -174,19 +184,22 @@ section {
     width: 100%;
     border-radius: 40px;
 }
-.info2 h3{
+
+.info2 h3 {
     color: white;
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.info2 p{
+
+.info2 p {
     color: white;
     font-size: 16px;
     line-height: 1.3em;
-    
+
 }
+
 .footer {
     background-color: #333333;
     color: #fff;
@@ -202,65 +215,71 @@ section {
 .footer-title span {
     color: #16ba6a;
 }
-@media (max-width:1023px){
-    header{
+
+@media (max-width:1023px) {
+    header {
         padding: 12px 20px;
     }
 
-    .title{
+    .title {
         font-size: 1.8em;
     }
 
-    section{
+    section {
         padding: 80px 20px;
     }
 
-    .main-content h2{
+    .main-content h2 {
         font-size: 1em;
     }
 
-    .main-content h3{
+    .main-content h3 {
         font-size: 1.6em;
     }
 
-    .content{
+    .content {
         flex-direction: column;
         align-items: center;
     }
 
 }
-@media (max-width:641px){
-    body{
+
+@media (max-width:641px) {
+    body {
         font-size: 12px;
     }
 
-    .main-content h2{
+    .main-content h2 {
         font-size: 0.8em;
     }
 
-    .main-content h3{
+    .main-content h3 {
         font-size: 1.4em;
     }
 }
 
-@media (max-width:300px){
-    body{
+@media (max-width:300px) {
+    body {
         font-size: 10px;
     }
 }
+
 a:nth-child(1) {
-	width: 100px;
-}
-a:nth-child(2) {
-	width: 110px;
-}
-a:nth-child(3) {
-	width: 100px;
-}
-a:nth-child(4) {
-	width: 160px;
-}
-a:nth-child(5) {
-	width: 120px;
+    width: 100px;
 }
 
+a:nth-child(2) {
+    width: 110px;
+}
+
+a:nth-child(3) {
+    width: 100px;
+}
+
+a:nth-child(4) {
+    width: 160px;
+}
+
+a:nth-child(5) {
+    width: 120px;
+}

@@ -13,6 +13,8 @@ body {
 }
 
 .card {
+  height: 450px;
+  overflow: hidden;
   background: #fff;
   border-radius: 10px;
   padding: 30px;
