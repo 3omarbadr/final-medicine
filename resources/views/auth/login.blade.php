@@ -74,10 +74,11 @@
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
                         ex ratione. Aliquid!
                     </p>
-                    <button class="btn transparent" id="sign-up-btn">
-                        <a href="{{route('register')}}">Sign up</a>
-                        
-                    </button>
+                    <form action="{{route('register')}}" method="GET">
+                        <button class="btn transparent">
+                            Sign up
+                        </button>
+                    </form>
                 </div>
                 <img src="{{asset('assets/web/img/log.svg')}}" class="image" alt="" />
             </div>
