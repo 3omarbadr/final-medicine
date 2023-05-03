@@ -56,6 +56,7 @@
                     <td>{{$contact->position}}</td>
                     <td>{{$contact->message}}</td>
                     <td>{{$contact->created_at}}</td>
+                    <td>{{$contact->updated_at}}</td>
                     <td>
                       <div class="btn-group">
                         <a href="{{route('contacts.show', $contact->id)}}" class="mr-1 btn btn-sm

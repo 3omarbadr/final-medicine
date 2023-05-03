@@ -21,7 +21,9 @@
   <div class="cont">
     <h1> Health Awarnes</h1>
     <p>We Care About Your Health</p>
-    <button type="submit" class="btn1"> See more</button>
+    <form action="{{route('web.news.index')}}" method="GET">
+      <button type="submit" class="btn1"> See more</button>
+    </form>
     <form action="{{route('web.about.index')}}" method="GET">
       <button type="submit" class="btn1"><span></span>Contact</button>
     </form>

@@ -204,7 +204,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{auth()->user()->name}}</a>
+                        <a href="#" class="d-block">{{auth()->user()->name ?? ''}}</a>
                     </div>
                 </div>
 
@@ -260,6 +260,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
 
+                        @auth
                         @if (Auth::user()->super_admin == 1)
                         <li class="nav-item">
                             <a href="{{url('dashboard/admins')}}" class="nav-link">
@@ -270,6 +271,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         @endif
+                        @endauth
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

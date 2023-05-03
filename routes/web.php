@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\IllnessController;
 use App\Http\Controllers\Dashboard\MedicineServiceController;
 use App\Http\Controllers\NewsController as WebNewsController;
+use App\Http\Controllers\AboutController as WebAboutController;
 use App\Http\Controllers\MedicineServiceController as WebMedicineServiceController;
 
 /*
@@ -34,8 +35,8 @@ Auth::routes();
 
 Route::get('/news', [WebNewsController::class, 'index'])->name('web.news.index');
 Route::get('/medicines', [WebMedicineServiceController::class, 'index'])->name('web.medicines.index');
-Route::get('/about-us', [AboutController::class, 'index'])->name('web.about.index');
-Route::post('/about-us/store', [AboutController::class, 'store'])->name('web.form');
+Route::get('/about-us', [WebAboutController::class, 'index'])->name('web.about.index');
+Route::post('/about-us/store', [WebAboutController::class, 'store'])->name('web.form');
 
 
 /*
