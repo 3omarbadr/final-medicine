@@ -30,7 +30,7 @@
         </li>
         @endguest
         </li>
-        <li><a href="#">About</a></li>
+        <li><a href="{{route('web.about.index')}}">About</a></li>
         <li><a href="{{route('web.medicines.index')}}">Medicine</a></li>
         <li><a href="{{route('web.news.index')}}">News</a></li>
     </ul>
