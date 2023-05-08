@@ -16,8 +16,14 @@
                 <form class="sign-in-form" method="POST" action="{{ route('login') }}">
                     @csrf
                     @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                    <span class="invalid-feedback" style="color: #721c24;
+                    background-color: #f8d7da;
+                    border-color: #f5c6cb;
+                    padding: 0.75rem 1.25rem;
+                    margin-bottom: 1rem;
+                    border: 1px solid transparent;
+                    border-radius: 0.25rem;" role="alert">
+                        <strong style="font-weight: bold;">{{ $message }}</strong>
                     </span>
                     @enderror
                     <h2 class="title">Sign in</h2>
@@ -35,8 +41,14 @@
                             autocomplete="current-password">
 
                         @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                        <span class="invalid-feedback" style="color: #721c24;
+                        background-color: #f8d7da;
+                        border-color: #f5c6cb;
+                        padding: 0.75rem 1.25rem;
+                        margin-bottom: 1rem;
+                        border: 1px solid transparent;
+                        border-radius: 0.25rem;" role="alert">
+                            <strong style="font-weight: bold;">{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
@@ -97,7 +109,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="{{asset('assets/web/js/final_app.js')}}"></script>
 </body>
 
 </html>
