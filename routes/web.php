@@ -29,6 +29,22 @@ Route::get('/', function () {
     return view('web.index');
 });
 
+Route::get('/meals', function () {
+    return view('web.meals.index');
+})->name('meals');
+
+Route::get('/calculator', function () {
+    return view('web.meals.calculator.index');
+})->name('calculator');
+
+Route::get('/medicio', function () {
+    return view('web.medicio.index');
+})->name('medicio');
+
+Route::get('/payment', function () {
+    return view('web.payment.index');
+})->name('credit-pay');
+
 
 Auth::routes();
 
@@ -37,6 +53,8 @@ Route::get('/news', [WebNewsController::class, 'index'])->name('web.news.index')
 Route::get('/medicines', [WebMedicineServiceController::class, 'index'])->name('web.medicines.index');
 Route::get('/about-us', [WebAboutController::class, 'index'])->name('web.about.index');
 Route::post('/about-us/store', [WebAboutController::class, 'store'])->name('web.form');
+
+
 
 
 /*
