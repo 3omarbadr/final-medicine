@@ -29,7 +29,7 @@ class IllnessRequest extends FormRequest
 
         if (request()->method() == 'PUT' || request()->method() == 'PATCH') {
             $rules['img'] = [
-                'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048',
             ];
         }
         return $rules;
