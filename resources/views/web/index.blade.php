@@ -133,7 +133,7 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi soluta est veniam sequi
               nemo, quas delectus eveniet ducimus rem animi. Natus non earum deleniti aliquam
             </p>
-            <button> <a href="{{route('medicineServices.index')}}" class="le">See</a></button>
+            <button> <a href="{{route('web.medicines.index')}}" class="le">See</a></button>
 
           </div>
         </div>
