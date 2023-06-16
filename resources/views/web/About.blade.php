@@ -23,7 +23,7 @@
         <div class="testimonial mySwiper">
             <div class="testi-content swiper-wrapper">
                 <div class="slide swiper-slide">
-                    <img src="#" alt="" class="image" />
+                    <img src="{{asset("assets/dashboard/img/avatar4.png")}}" alt="" class="image" />
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
                         saepe provident dolorem a quaerat quo error facere nihil deleniti
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="slide swiper-slide">
-                    <img src="#" alt="" class="image" />
+                    <img src="{{asset("assets/dashboard/img/avatar5.png")}}" alt="" class="image" />
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
                         saepe provident dolorem a quaerat quo error facere nihil deleniti
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="slide swiper-slide">
-                    <img src="#" alt="" class="image" />
+                    <img src="{{asset("assets/dashboard/img/avatar3.png")}}" alt="" class="image" />
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
                         saepe provident dolorem a quaerat quo error facere nihil deleniti

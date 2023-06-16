@@ -21,5 +21,13 @@ class AdminSeeder extends Seeder
             'status' => 'active',
             'super_admin' => 1,
         ]);
+
+        Admin::create([
+            'name' => 'Health Awareness',
+            'email' => 'health1@admin.com',
+            'password' => Hash::make('password'),
+            'status' => 'active',
+            'super_admin' => 0,
+        ]);
     }
 }
