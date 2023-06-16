@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
         Admin::create([
             'name' => 'Health Awareness',
             'email' => 'health@admin.com',
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('password'),
             'status' => 'active',
             'super_admin' => 1,
         ]);
