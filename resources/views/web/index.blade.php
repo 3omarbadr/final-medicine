@@ -115,7 +115,7 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi soluta est veniam sequi
               nemo, quas delectus eveniet ducimus rem animi. Natus non earum deleniti aliquam
             </p>
-            <button> <a href="./medicio/index-video.html" class="le">See</a></button>
+            <button> <a href="{{route('medicio')}}" class="le">See</a></button>
 
           </div>
         </div>
@@ -133,7 +133,7 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi soluta est veniam sequi
               nemo, quas delectus eveniet ducimus rem animi. Natus non earum deleniti aliquam
             </p>
-            <button> <a href="./medicine.html" class="le">See</a></button>
+            <button> <a href="{{route('medicineServices.index')}}" class="le">See</a></button>
 
           </div>
         </div>
@@ -151,7 +151,7 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi soluta est veniam sequi
               nemo, quas delectus eveniet ducimus rem animi. Natus non earum deleniti aliquam
             </p>
-            <button> <a href="./news.html" class="le">See</a></button>
+            <button> <a href="{{route('news.index')}}" class="le">See</a></button>
 
           </div>
         </div>
@@ -169,7 +169,7 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi soluta est veniam sequi
               nemo, quas delectus eveniet ducimus rem animi. Natus non earum deleniti aliquam
             </p>
-            <button> <a href="./medicio/medico.html" class="le">See</a></button>
+            <button> <a href="{{route('medicio')}}" class="le">See</a></button>
 
           </div>
         </div>
