@@ -25,6 +25,6 @@ class AboutController extends Controller
 
         ContactForm::create($validatedData);
     
-        return to_route('web.about.index')->with('success','Your message received successfully');
+        return back()->with('success','Your message received successfully');
     }
 }

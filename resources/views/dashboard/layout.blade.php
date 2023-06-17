@@ -53,8 +53,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li>
                     <form action="{{ route('dashboard.logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Sign out</button>
-                      </form>
+                        <button type="submit" class="btn btn-link nav-link">
+                            <i class="fa fa-sign-out"></i> Sign out
+                        </button>
+                    </form>
                 </li>
             </ul>
 
