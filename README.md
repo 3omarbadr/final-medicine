@@ -23,7 +23,12 @@ npm run build
 ```
 
 ```
-php artisan migrate --seed
+php artisan migrate
+php artisan db:seed
+```
+
+```
+php artisan storage:link
 ```
 
 ```
