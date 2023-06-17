@@ -31,7 +31,7 @@
                 <div class="card h-100">
                     <div class="icon">
                         <img src="{{ Illuminate\Support\Str::startsWith($medicine->img, 'medicines') ? url("storage/$medicine->img") : $medicine->img }}"
-                            alt="news" style="max-height: 150px; object-fit: cover;">
+                        alt="medicines" style="max-height: 150px; object-fit: cover;">
                     </div>
                     <div class="info">
                         <h3>{{$medicine->name}}</h3>
@@ -42,7 +42,7 @@
             @endforeach
         </div>
     </section>
-    
+
 
     <section class="section">
         <h3>Working Process</h3>
@@ -53,7 +53,7 @@
         <div class="content2">
             <div class="card2">
                 <div class="icon">
-                    <img src="./images/doctor-appointment.jpg" alt="">
+                    <img src="{{asset('assets/web/images/doctor-appointment.jpg')}}" alt="">
                 </div>
                 <div class="info2">
                     <h3>Appointment</h3>
@@ -62,7 +62,7 @@
             </div>
             <div class="card2">
                 <div class="icon">
-                    <img src="./images/pathoolgy.jpg" alt="">
+                    <img src="{{asset('assets/web/images/pathoolgy.jpg')}}" alt="">
                 </div>
                 <div class="info2">
                     <h3>Expert Doctor</h3>
@@ -71,7 +71,7 @@
             </div>
             <div class="card2">
                 <div class="icon">
-                    <img src="./images/SERVICE-TESTIMONIAL-hospital-to-home.jpg" alt="">
+                    <img src="{{asset('assets/web/images/SERVICE-TESTIMONIAL-hospital-to-home.jpg')}}" alt="">
                 </div>
                 <div class="info2">
                     <h3>Consultation</h3>
@@ -80,7 +80,7 @@
             </div>
             <div class="card2">
                 <div class="icon">
-                    <img src="./images/caregiver-assisting-senior-man-out-of-bed.jpg" alt="">
+                    <img src="{{asset('assets/web/images/caregiver-assisting-senior-man-out-of-bed.jpg')}}" alt="">
                 </div>
                 <div class="info2">
                     <h3>Enjoy Life</h3>
