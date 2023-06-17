@@ -13,12 +13,6 @@
 
 <body id="abou">
     @include('web.partials.nav')
-    @if (session('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>{{session('success')}}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
     <section class="container">
         <div class="testimonial mySwiper">
             <div class="testi-content swiper-wrapper">
@@ -71,36 +65,43 @@
         </div>
     </section>
 
-    @include('dashboard.inc.errors')
     <div>
         <h2 class="text-center">Contact Form</h2>
         <form method="POST" action="{{ route('web.form') }}">
             @csrf
             <div class="form-container">
+                <div class="col-3 offset-4">
+                    @include('dashboard.inc.errors')
+                    @include('dashboard.inc.messages')
+                </div>
+                
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input class="form-control" type="text" name="name" id="name" required>
+                    <input class="form-control" type="text" name="name" id="name">
                 </div>
-
+    
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" required>
+                    <input type="email" name="email" id="email">
                 </div>
-
+    
                 <div class="form-group">
                     <label for="position">Position:</label>
                     <input type="text" name="position" id="position">
                 </div>
-
+    
                 <div class="form-group">
                     <label for="message">Message:</label>
-                    <textarea name="message" id="message" required></textarea>
+                    <textarea name="message" id="message"></textarea>
                 </div>
-
-                <button class="btn btn-primary mb-2" type="submit">Submit</button>
+    
+                <div class="text-center">
+                    <button class="btn btn-primary mb-2" type="submit">Submit</button>
+                </div>
             </div>
         </form>
     </div>
+    
 
 
 
