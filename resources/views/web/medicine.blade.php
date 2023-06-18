@@ -30,7 +30,7 @@
             <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
                 <div class="card h-100">
                     <div class="icon">
-                        <img src="{{ Illuminate\Support\Str::startsWith($medicine->img, 'medicines') ? url("storage/$medicine->img") : $medicine->img }}"
+                        <img src="{{ Illuminate\Support\Str::startsWith($medicine->img, 'medicineServices') ? url("storage/$medicine->img") : $medicine->img }}"
                         alt="medicines" style="max-height: 150px; object-fit: cover;">
                     </div>
                     <div class="info">
